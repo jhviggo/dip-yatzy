@@ -1,5 +1,3 @@
-// NOOP
-
 /**
  * Board logic
  */
