@@ -29,6 +29,15 @@ h1, h2, h3, h4, h5 {
     grid-template-rows: 1fr 4fr 1fr;
 }
 
+.dice-board-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+}
+
 /* dice board roll button */
 .btn-roll {
 
@@ -81,4 +90,93 @@ span:not([disabled="true"]):hover {
 
 .pointer {
     cursor: pointer;
+}
+
+/*
+ * dice
+ */
+.die {
+    border: 1px solid black;
+    border-radius: 10px;
+    display: grid;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+/* die one */
+.die-one {
+    justify-content: center;
+    align-items: center;
+}
+
+/* die two */
+.die-two {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.die-two .eye:first-child {
+    grid-column: 2;
+}
+
+/* die three */
+.die-three {
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.die-three .eye {
+    justify-self: center;
+}
+
+.die-three .eye:first-child {
+    justify-self: end;
+}
+
+.die-three .eye:last-child {
+    justify-self: start;
+}
+
+/* die four */
+.die-four {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* die five*/
+.die-five {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+
+.die-five .eye:nth-child(3) {
+    grid-column: span 2;
+}
+
+/* die six */
+.die-six {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1rf);
+}
+
+.die:hover .eye {
+    background-color: blue;
+}
+
+.die:hover {
+    border-color: blue;
+}
+
+.die div {
+    background-color: black;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    justify-self: center;
+    align-self: center;
 }

@@ -110,8 +110,28 @@ const renderOverview = () => {
     overview.innerHTML = items;
 }
 
+
+/**
+ * Render die
+ */
+const renderDie = (eyes) => {
+    let die = document.createElement("div");
+    die.className = `die die-${dice[eyes]}`;
+    
+    for(let i = 0; i < eyes; i++) {
+        die.innerHTML += `<div class="eye"></div>`
+    }
+
+    return die;
+}
+
 const mainRenderer = () => {
     renderOverview();
+    document.getElementById("dice").appendChild(renderDie(4))
+    document.getElementById("dice").appendChild(renderDie(1))
+    document.getElementById("dice").appendChild(renderDie(6))
+    document.getElementById("dice").appendChild(renderDie(4))
+    document.getElementById("dice").appendChild(renderDie(2))
 }
 
 mainRenderer();
