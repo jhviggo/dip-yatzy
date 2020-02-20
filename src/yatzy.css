@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5 {
     margin-left: auto;
     margin-right: auto;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 2fr;
 }
 
 /*
@@ -34,13 +34,8 @@ h1, h2, h3, h4, h5 {
     justify-content: center;
     align-items: center;
     padding: 15px;
-    grid-template-columns: repeat(5, 1fr);
-    justify-items: center;
-}
-
-/* dice board roll button */
-.btn-roll {
-
+    grid-auto-flow: column;
+    /*grid-gap: 10px;*/
 }
 
 /*
@@ -88,6 +83,11 @@ span:not([disabled="true"]):hover {
     cursor: pointer;
 }
 
+.btn:focus {
+    border-color: blue;
+    outline: unset;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -101,8 +101,20 @@ span:not([disabled="true"]):hover {
     display: grid;
     height: 50px;
     width: 50px;
+    margin: 10px;
     cursor: pointer;
 }
+
+.selected {
+    border-color: green;
+    border-width: 2px;
+    margin: 9px;
+}
+
+.selected .eye {
+    background-color: green;
+}
+
 /* die one */
 .die-one {
     justify-content: center;
@@ -161,7 +173,7 @@ span:not([disabled="true"]):hover {
 /* die six */
 .die-six {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1rf);
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .die:hover .eye {
