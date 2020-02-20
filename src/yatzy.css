@@ -42,8 +42,16 @@ h1, h2, h3, h4, h5 {
  * overview
  */
 #overview {
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid;
+}
+
+#overview div {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+#overview div:not([disabled="true"]):hover span {
+    background-color: lightblue;
 }
 
 /* overview spans */
@@ -53,7 +61,7 @@ span {
     padding-left: 15px;
 }
 
-span:not([disabled="true"]):hover {
+.locked {
     background-color: lightblue;
 }
 

@@ -26,7 +26,7 @@ const scoreFieldsSameEyes = [
         text: "Sixes",
         score: 0
     }
-]
+];
 
 const scoreFieldsSum = [
     {
@@ -39,7 +39,7 @@ const scoreFieldsSum = [
         score: 0,
         class: "border-bottom bold"
     }
-]
+];
 
 const scoreFieldsDifferent = [
     {
@@ -70,13 +70,15 @@ const scoreFieldsDifferent = [
         text: "Yatzy",
         score: 0
     },
-]
+];
 
-totalScore = {
-    text: "Score",
-    score: 0,
-    class: "bold"
-}
+totalScore = [
+    {
+        text: "Score",
+        score: 0,
+        class: "bold"
+    }
+];
 
 const dice = {
     1: "one",

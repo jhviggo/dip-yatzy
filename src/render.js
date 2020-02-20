@@ -1,32 +1,17 @@
 /**
   * Renders game overview
   */
-const renderOverview = () => {
+const renderOverviewContainer = (container) => {
     const overview = document.getElementById("overview");
+    overview.onclick = event => console.log(event);
 
-    items = "";
-
-    scoreFieldsSameEyes.forEach(item => items += `
-        <span>${item.text}</span>
-        <span class=\"pointer\">${item.score}</span>
-    `);
-
-    scoreFieldsSum.forEach(item => items += `
-        <span class=\"${item.class}\" disabled="true">${item.text}</span>
-        <span class=\"${item.class}\" disabled="true">${item.score}</span>
-    `);
-
-    scoreFieldsDifferent.forEach(item => items += `
-        <span>${item.text}</span>
-        <span class=\"pointer\">${item.score}</span>
-    `);
-
-    items += `
-        <span class=\"${totalScore.class}\" disabled="true">${totalScore.text}</span>
-        <span class=\"${totalScore.class}\" disabled="true">${totalScore.score}</span>
-    `;
-
-    overview.innerHTML = items;
+    container.forEach(item => {
+        const sameEyesContainer = document.createElement("div");
+        sameEyesContainer.innerHTML = `
+            <span class="${item.class || 'pointer'}">${item.text}</span>
+            <span class="${item.class || 'pointer'}">${item.score}</span>`
+        overview.appendChild(sameEyesContainer);
+    });
 }
 
 
@@ -45,8 +30,16 @@ const renderDie = (eyes) => {
     return die;
 }
 
+/**
+ * Main method
+ */
 const mainRenderer = () => {
-    renderOverview();
+    renderOverviewContainer(scoreFieldsSameEyes);
+    renderOverviewContainer(scoreFieldsSum);
+    renderOverviewContainer(scoreFieldsDifferent);
+    renderOverviewContainer(totalScore);
+
+    // render dice hardcoded for now
     document.getElementById("dice").appendChild(renderDie(4))
     document.getElementById("dice").appendChild(renderDie(1))
     document.getElementById("dice").appendChild(renderDie(6))
