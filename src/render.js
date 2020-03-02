@@ -18,33 +18,38 @@ const renderOverviewContainer = (container) => {
 /**
  * Render die
  */
-const renderDie = (eyes) => {
+const getSingleDiceElement = (dice, index) => {
     let die = document.createElement("div");
     die.onclick = selectDie;
-    die.className = `die die-${dice[eyes]}`;
+    die.setAttribute("index", index)
+    die.className = `die die-${diceNames[dice.eyes]}${dice.locked ? " selected" : ""}`;
     
-    for(let i = 0; i < eyes; i++) {
+    for(let i = 0; i < dice.eyes; i++) {
         die.innerHTML += `<div class="eye"></div>`
     }
 
     return die;
 }
 
+const renderDice = () => {
+    document.getElementById("dice").innerHTML = "";
+    for (let i in boardDice) {
+        document.getElementById("dice").appendChild(getSingleDiceElement(boardDice[i], i));
+    }
+}
+
 /**
  * Main method
  */
 const mainRenderer = () => {
+    // render UI
     renderOverviewContainer(scoreFieldsSameEyes);
     renderOverviewContainer(scoreFieldsSum);
     renderOverviewContainer(scoreFieldsDifferent);
     renderOverviewContainer(totalScore);
 
-    // render dice hardcoded for now
-    document.getElementById("dice").appendChild(renderDie(4))
-    document.getElementById("dice").appendChild(renderDie(1))
-    document.getElementById("dice").appendChild(renderDie(6))
-    document.getElementById("dice").appendChild(renderDie(4))
-    document.getElementById("dice").appendChild(renderDie(2))
+    // add event listen to button
+    document.getElementById("roll").onclick = rollDiceHandler;
 }
 
 mainRenderer();

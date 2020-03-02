@@ -80,7 +80,7 @@ totalScore = [
     }
 ];
 
-const dice = {
+const diceNames = {
     1: "one",
     2: "two",
     3: "three",
@@ -88,3 +88,7 @@ const dice = {
     5: "five",
     6: "six"
 };
+
+const boardDice = []
+
+const amountOfDiceInGame = 5;
