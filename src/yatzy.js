@@ -2,10 +2,33 @@
  * Board logic
  */
 const selectDie = (event) => {
-    if (event.target.className == "eye") {
-        event.target.parentElement.classList.toggle("selected");
-        return;
-    }
+    let target;
 
-    event.target.classList.toggle("selected");
-} 
+    if (event.target.className == "eye") {
+        target = event.target.parentElement;
+    } else {
+        target = event.target;
+    }
+    const index = target.getAttribute("index");
+    target.classList.toggle("selected");
+    boardDice[index].locked = !boardDice[index].locked;
+}
+
+/**
+ * Rolling dice
+ */
+const rollDiceHandler = () => {
+    rollDice();
+    renderDice();
+}
+
+ const rollDice = () => {
+    for (let i = 0; i < amountOfDiceInGame; i++) {
+        if (!boardDice[i] || boardDice[i] && !boardDice[i].locked) {
+            boardDice[i] = {
+                eyes: parseInt(Math.random()*5+1),
+                locked: false
+            };
+        }
+    }
+ }
