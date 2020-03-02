@@ -50,6 +50,8 @@ const mainRenderer = () => {
 
     // add event listen to button
     document.getElementById("roll").onclick = rollDiceHandler;
+
+    document.getElementById("round-counter").innerText = round;
 }
 
 mainRenderer();
