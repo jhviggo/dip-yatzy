@@ -38,6 +38,13 @@ h1, h2, h3, h4, h5 {
     /*grid-gap: 10px;*/
 }
 
+#round-counter {
+    display: flex;
+    font-size: 30px;
+    align-items: center;
+    padding-left: 15px;
+}
+
 /*
  * overview
  */

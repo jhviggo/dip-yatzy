@@ -92,3 +92,5 @@ const diceNames = {
 const boardDice = []
 
 const amountOfDiceInGame = 5;
+
+let round = 0;

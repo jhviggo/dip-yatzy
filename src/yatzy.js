@@ -18,17 +18,21 @@ const selectDie = (event) => {
  * Rolling dice
  */
 const rollDiceHandler = () => {
-    rollDice();
-    renderDice();
+    if (round < 3) {
+        rollDice();
+        renderDice();
+        round++;
+        document.getElementById("round-counter").innerText = round;
+    }
 }
 
- const rollDice = () => {
-    for (let i = 0; i < amountOfDiceInGame; i++) {
-        if (!boardDice[i] || boardDice[i] && !boardDice[i].locked) {
-            boardDice[i] = {
-                eyes: parseInt(Math.random()*5+1),
-                locked: false
-            };
-        }
+const rollDice = () => {
+for (let i = 0; i < amountOfDiceInGame; i++) {
+    if (!boardDice[i] || boardDice[i] && !boardDice[i].locked) {
+        boardDice[i] = {
+            eyes: parseInt(Math.random()*5+1),
+            locked: false
+        };
     }
- }
+}
+}
