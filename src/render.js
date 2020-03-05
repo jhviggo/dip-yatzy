@@ -1,15 +1,26 @@
 /**
   * Renders game overview
   */
-const renderOverviewContainer = (container) => {
+const renderOverviewContainer = () => {
     const overview = document.getElementById("overview");
-    overview.onclick = event => console.log(event);
+    overview.innerHTML = "";
+    overview.onclick = lockOverviewField
 
-    container.forEach(item => {
+    scoreFields.forEach(item => {
         const sameEyesContainer = document.createElement("div");
+        let pointsId = "";
+
+        if (item.index !== undefined) {
+            sameEyesContainer.setAttribute("index", item.index);
+            pointsId = `id="points-${item.index}"`;
+
+        }
+        if (item.locked == true) {
+            sameEyesContainer.classList.add("locked");
+        }
         sameEyesContainer.innerHTML = `
             <span class="${item.class || 'pointer'}">${item.text}</span>
-            <span class="${item.class || 'pointer'}">${item.score}</span>`
+            <span ${pointsId} class="${item.class || 'pointer'}">${item.locked ? item.score : ""}</span>`
         overview.appendChild(sameEyesContainer);
     });
 }
@@ -43,10 +54,7 @@ const renderDice = () => {
  */
 const mainRenderer = () => {
     // render UI
-    renderOverviewContainer(scoreFieldsSameEyes);
-    renderOverviewContainer(scoreFieldsSum);
-    renderOverviewContainer(scoreFieldsDifferent);
-    renderOverviewContainer(totalScore);
+    renderOverviewContainer();
 
     // add event listen to button
     document.getElementById("roll").onclick = rollDiceHandler;
