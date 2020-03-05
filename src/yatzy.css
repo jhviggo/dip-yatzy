@@ -68,7 +68,7 @@ span {
     padding-left: 15px;
 }
 
-.locked {
+.locked span {
     background-color: lightblue;
 }
 
